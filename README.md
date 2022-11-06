@@ -13,13 +13,13 @@ A simple tool [Demo](https://flaming-cl.github.io/editorPlugin) to color text-fr
 Get the package
 
 ```shell
-npm i --save-dev editorjs-text-color-plugin
+npm i --save-dev @medistream/editorjs-text-color-plugin
 ```
 
 Import the plugin
 
 ```javascript
-const ColorPlugin = require('editorjs-text-color-plugin');
+const ColorPlugin = require('@medistream/editorjs-text-color-plugin');
 ```
 
 ### Load from CDN

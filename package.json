@@ -1,5 +1,5 @@
 {
-  "name": "editorjs-text-color-plugin",
+  "name": "@medistream/editorjs-text-color-plugin",
   "version": "1.13.1",
   "description": "Text Color Tool for Editor.js",
   "main": "./dist/bundle.js",
