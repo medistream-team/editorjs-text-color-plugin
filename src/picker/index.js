@@ -8,7 +8,7 @@ import {
     getCustomColorCache,
     setCustomColorCache
 } from './utils/main';
-const ColorCollections = ['#ff1300','#EC7878','#9C27B0','#673AB7','#3F51B5','#0070FF','#03A9F4','#00BCD4','#4CAF50','#8BC34A','#CDDC39','#FFE500','#FFBF00','#FF9800','#795548','#9E9E9E','#5A5A5A','#FFF'];
+const ColorCollections = ['rgb(23,43,77)', 'rgb(7,71,166)', 'rgb(0,141,166)', 'rgb(0,102,68)', 'rgb(255,153,31)', 'rgb(191,38,0)', 'rgb(64,50,148)', 'rgb(151,160,175)', 'rgb(76,154,255)', 'rgb(0,184,217)', 'rgb(54,179,126)', 'rgb(255,196,0)', 'rgb(255,86,48)', 'rgb(101,84,192)', 'rgb(255,255,255)', 'rgb(179,212,255)', 'rgb(179,245,255)', 'rgb(171,245,209)', 'rgb(255,240,179)', 'rgb(255,189,173)', 'rgb(234,230,255)']
 class ColorPlugin extends HTMLElement {
 
     static get observedAttributes() { return ['disabled','dir'] }
@@ -37,8 +37,8 @@ class ColorPlugin extends HTMLElement {
         :host([disabled]){
             pointer-events:none;
         }
-        
-        :host(:focus-within) xy-popover,:host(:hover) xy-popover{ 
+
+        :host(:focus-within) xy-popover,:host(:hover) xy-popover{
             z-index: 2;
         }
         input[type="color"]{
@@ -109,20 +109,22 @@ class ColorPlugin extends HTMLElement {
             background-size: 10px 10px;
         }
         .color-sign {
-           max-width: 220px;
+           max-width: 250px;
            padding: 10px;
-           display:grid;
+           display: flex;
+           flex-wrap: wrap;
+           gap: 10px;
            cursor: default;
-           grid-template-columns: repeat(auto-fit, minmax(15px, 1fr));
-           grid-gap: 10px;     
+
         }
         .color-sign>button {
             position: relative;
-            width: 16px;
-            height: 16px;
-            border-radius: 6px;
-            border: 1px solid #b8b9b49e;
-            outline: 0;
+            width: 27px;
+            height: 27px;
+            border: 1px solid rgba(179,212,255,.6);
+            border-radius: 2px;
+            box-sizing: border-box;
+            margin: 0;
             opacity: 0.9;
         }
         .color-sign>button:hover {

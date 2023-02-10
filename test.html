@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+</head>
+<body>
+    <div id="editorjs"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+    <script src="dist/bundle.js"></script>
+    <script type="module">
+
+        var editor = new EditorJS({
+            tools: {
+                color: {
+                class: ColorPlugin,
+                config: {
+                    // colorCollections: ['#9a3837', '#81685a', '#e29765', '#1bbc9c', '#3e8eb9', '#5967b6'],
+                    // defaultColor: '#9a3837',
+                    type: 'text'
+                }
+                },
+                marker: {
+                class: ColorPlugin,
+                config: {
+                    colorCollections: ['#9a3837', '#81685a', '#e29765', '#1bbc9c', '#3e8eb9', '#5967b6'],
+                    defaultColor: '#9a3837',
+                    type: 'marker'
+                }
+                },
+            },
+            readonly: true,
+            // data: JSON.parse(localStorage.getItem('content')),
+            async onChange(api) {
+                const content = await api.saver.save()
+                // localStorage.setItem('content', JSON.stringify(content))
+                console.log(content)
+            },
+
+        });
+    </script>
+</body>
+</html>
