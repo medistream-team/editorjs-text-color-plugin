@@ -25,12 +25,6 @@ class ColorPlugin extends HTMLElement {
 
         shadowRoot.innerHTML = `
         <style>
-        :host{
-            display:inline-block;
-            width:15px;
-            font-size:14px;
-            border: none;
-        }
         :host([block]){
             display:block;
         }
@@ -48,24 +42,8 @@ class ColorPlugin extends HTMLElement {
         }
         xy-popover{
             width:100%;
-            height:35px;
-            margin-right: 3px;
-        }
-        xy-popover:hover {
-            border-radius: 0 5px 5px 0;
-            background: rgba(203, 203, 203, 0.49);
-        }
-        .color-btn {
-            border: 1px solid #cab9b9;
-            margin: 18px 2px 2px 2px;
-            width: 6px;
-            height: 6px;
-            opacity: 0.9;
-            padding: 1px 0 1px 0;
-            color: var(--themeColor, #42b983);
-            background: var(--themeColor, #42b983);
-            font-weight: bolder;
-            border-radius: 2px;
+            height:100%;
+            padding: 4px;
         }
         .color-btn:hover {
             opacity: 1;
@@ -96,26 +74,13 @@ class ColorPlugin extends HTMLElement {
             font-size: .8em;
             margin-left: .8em;
         }
-        .color-btn::before{
-            content:'';
-            position:absolute;
-            left:5px;
-            top:5px;
-            right:5px;
-            bottom:5px;
-            z-index:-1;
-            background: linear-gradient(45deg, #ddd 25%,transparent 0,transparent 75%,#ddd 0 ), linear-gradient(45deg, #ddd 25%, transparent 0, transparent 75%, #ddd 0);
-            background-position: 0 0,5px 5px;
-            background-size: 10px 10px;
-        }
         .color-sign {
-           max-width: 250px;
+           max-width: calc((27px + 10px) * 7);
            padding: 10px;
-           display: flex;
-           flex-wrap: wrap;
-           gap: 10px;
+           display:grid;
            cursor: default;
-
+           grid-template-columns: repeat(auto-fit, minmax(27px, 1fr));
+           grid-gap: 10px;
         }
         .color-sign>button {
             position: relative;
@@ -139,19 +104,7 @@ class ColorPlugin extends HTMLElement {
         .color-fire-btn {
             font-size: 17px;
             font-weight: bold;
-            height: 28px;
-            padding-top: 8px;
-            padding-right: 1px;
-            margin-left: 3px;
             text-shadow: 2px 0 0 #cab9b9;
-            padding-left: 3px;
-            border-radius: 5px 0 0 5px;
-        }
-        .color-fire-btn:hover {
-            font-size: 17px;
-            font-weight: bold;
-            text-shadow: 2px 0 0 #cab9b9;
-            background: rgba(203, 203, 203, 0.49);
             border-radius: 5px 0 0 5px;
         }
         .color-fire-btn-text {
@@ -159,11 +112,12 @@ class ColorPlugin extends HTMLElement {
         }
         </style>
         <section class="color-section">
-            <div class="color-fire-btn" id="color-fire-btn">
-                ${this.pluginType === 'marker' ? MARKER : '<div class="color-fire-btn-text">A</div>' }
-            </div>
             <xy-popover id="popover" ${this.dir ? "dir='" + this.dir + "'" : ""}>
-                <xy-button class="color-btn" id="color-btn" ${this.disabled ? "disabled" : ""}>_</xy-button>
+                <xy-button class="color-btn" id="color-btn" ${this.disabled ? "disabled" : ""}>
+                    <div class="color-fire-btn" id="color-fire-btn">
+                        ${this.pluginType === 'marker' ? MARKER : '<div class="color-fire-btn-text">A</div>' }
+                    </div>
+                </xy-button>
                 <xy-popcon id="popcon">
                     <div class="color-sign" id="colors">
                         ${this.hasCustomPicker && (`<button id="custom-picker" class="rainbow-mask"/>`) || ''}

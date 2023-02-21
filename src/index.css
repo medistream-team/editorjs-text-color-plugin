@@ -13,8 +13,3 @@
 .layout_default .picker_slider, .layout_default .picker_selector {
   padding: 5px;
 }
-
-.colorPlugin.ce-inline-tool {
-  width: 30px;
-  border-radius: 3px;
-}
